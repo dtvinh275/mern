@@ -70,7 +70,7 @@ const AllProperties = () => {
                     mb={{ xs: "20px", sm: 0 }}
                 >
                     <CustomButton
-                        title={`Sort price ${
+                        title={`Sort property ${
                             currentPrice === "asc" ? "↑" : "↓"
                         }`}
                         handleClick={() => toggleSort("price")}
@@ -117,14 +117,14 @@ const AllProperties = () => {
                     >
                         <MenuItem value="">All</MenuItem>
                         {[
-                            "Apartment",
-                            "Villa",
-                            "Farmhouse",
-                            "Condos",
-                            "Townhouse",
-                            "Duplex",
-                            "Studio",
-                            "Chalet",
+                            "Innova 1 (Piippukatu 11)",
+                            "Innova 2 (Lutakonaukio 7)",
+                            "Mattilanniemi 6-8",
+                            "Ohjelmakaari 10",
+                            "Ylistönmäentie 26",
+                            "Ylistönmäentie 31",
+                            "Survontie 9",
+                            "Laserkatu 6",
                         ].map((type) => (
                             <MenuItem
                                 key={type}

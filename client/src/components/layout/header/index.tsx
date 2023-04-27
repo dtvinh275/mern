@@ -1,14 +1,20 @@
 import React, { useContext } from "react";
-import { useGetIdentity } from "@pankod/refine-core";
+import { useGetIdentity, useGetLocale, useSetLocale } from "@pankod/refine-core";
 import {
   AppBar,
-  IconButton,
   Stack,
   Toolbar,
   Typography,
   Avatar,
+  FormControl,
+  IconButton,
+  MenuItem,
+  Select,
 } from "@pankod/refine-mui";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
+
+import i18n from "i18n";
 
 import { ColorModeContext } from "contexts";
 
@@ -17,6 +23,10 @@ export const Header: React.FC = () => {
 
   const { data: user } = useGetIdentity();
   const shouldRenderHeader = true; // since we are using the dark/light toggle; we don't need to check if user is logged in or not.
+
+  const changeLanguage = useSetLocale();
+  const locale = useGetLocale();
+  const currentLocale = locale();
 
   return shouldRenderHeader ? (
     <AppBar
@@ -32,13 +42,57 @@ export const Header: React.FC = () => {
           justifyContent="flex-end"
           alignItems="center"
         >
-          {/* <IconButton
-            onClick={() => {
-              setMode();
-            }}
-          >
-            {mode === "dark" ? <LightModeOutlined /> : <DarkModeOutlined />}
-          </IconButton> */}
+            <FormControl sx={{ minWidth: 64 }}>
+              <Select
+                disableUnderline
+                defaultValue={currentLocale}
+                inputProps={{ "aria-label": "Without label" }}
+                variant="standard"
+                sx={{
+                  color: "inherit",
+                  "& .MuiSvgIcon-root": {
+                    color: "inherit",
+                  },
+                  "& .MuiStack-root > .MuiTypography-root": {
+                    display: {
+                      xs: "none",
+                      sm: "block",
+                    },
+                  },
+                }}
+              >
+                {[...(i18n.languages ?? [])].sort().map((lang: string) => (
+                  // @ts-ignore
+                  <MenuItem
+                    selected={currentLocale === lang}
+                    key={lang}
+                    defaultValue={lang}
+                    onClick={() => {
+                      changeLanguage(lang);
+                    }}
+                    value={lang}
+                  >
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="center"
+                    >
+                      <Avatar
+                        sx={{
+                          width: "24px",
+                          height: "24px",
+                          marginRight: "5px",
+                        }}
+                        src={`/images/flags/${lang}.svg`}
+                      />
+                      <Typography>
+                        {lang === "en" ? "English" : "German"}
+                      </Typography>
+                    </Stack>
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
           <Stack
             direction="row"
             gap="16px"

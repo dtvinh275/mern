@@ -71,7 +71,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                                   {name}
                               </Typography>
                               <Typography fontSize={16} color="#808191">
-                                  Realestate Agent
+                                  Admin
                               </Typography>
                           </Stack>
 
@@ -95,8 +95,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                                           fontSize={14}
                                           color="#11142D"
                                       >
-                                          4517 Washington Ave. Manchaster,
-                                          Kentucky 39495
+                                          Laserkatu 6, 53850 Lappeeanranta
                                       </Typography>
                                   </Box>
                               </Stack>
@@ -127,7 +126,7 @@ const Profile = ({ type, name, avatar, email, properties }: ProfileProps) => (
                                               color="#11142D"
                                               noWrap
                                           >
-                                              +0123 456 7890
+                                              +358 4661 621 88
                                           </Typography>
                                       </Box>
                                   </Stack>

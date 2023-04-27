@@ -9,7 +9,8 @@ const Form = ({
   handleImageChange,
   formLoading,
   onFinishHandler,
-  propertyImage,}: FormProps) => {
+  propertyImage,
+}: FormProps) => {
   return (
     <Box>
       <Typography fontSize={25} fontWeight={700} color="#11142d">
@@ -47,7 +48,7 @@ const Form = ({
                           {...register("title", { required: true })}
                       />
                   </FormControl>
-                  <FormControl>
+                  {/* <FormControl>
                       <FormHelperText
                           sx={{
                               fontWeight: 500,
@@ -74,7 +75,7 @@ const Form = ({
                           }}
                           {...register("description", { required: true })}
                       />
-                  </FormControl>
+                  </FormControl> */}
 
                   <Stack direction="row" gap={4}>
                       <FormControl sx={{ flex: 1 }}>
@@ -86,7 +87,7 @@ const Form = ({
                                   color: "#11142d",
                               }}
                           >
-                              Select Property Type
+                              Select City
                           </FormHelperText>
                           <Select
                               variant="outlined"
@@ -99,14 +100,14 @@ const Form = ({
                                   required: true,
                               })}
                           >
-                              <MenuItem value="apartment">Apartment</MenuItem>
-                              <MenuItem value="villa">Villa</MenuItem>
-                              <MenuItem value="farmhouse">farmhouse</MenuItem>
+                              <MenuItem value="apartment">Jyväskylä</MenuItem>
+                              <MenuItem value="villa">Lappeeranta</MenuItem>
+                              {/* <MenuItem value="farmhouse">farmhouse</MenuItem>
                               <MenuItem value="condos">Condos</MenuItem>
                               <MenuItem value="townhouse">Townhouse</MenuItem>
                               <MenuItem value="duplex">Duplex</MenuItem>
                               <MenuItem value="studio">Studio</MenuItem>
-                              <MenuItem value="chalet">Chalet</MenuItem>
+                              <MenuItem value="chalet">Chalet</MenuItem> */}
                           </Select>
                       </FormControl>
                       <FormControl>
@@ -118,7 +119,7 @@ const Form = ({
                                   color: "#11142d",
                               }}
                           >
-                              Enter property price
+                              Enter number parking slots
                           </FormHelperText>
                           <TextField
                               fullWidth

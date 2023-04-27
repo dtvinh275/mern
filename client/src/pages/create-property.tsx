@@ -29,7 +29,7 @@ const CreateProperty = () => {
   };
 
   const onFinishHandler = async (data: FieldValues) => {
-      if (!propertyImage.url) return alert("Please select an image");
+      //if (!propertyImage.url) return alert("Please select an image");
 
       await onFinish({
           ...data,

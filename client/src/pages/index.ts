@@ -7,6 +7,10 @@ import { Login } from "./login";
 import MyProfile from "./my-profile";
 import PropertyDetails from "./property-details";
 import EditProperty from "./edit-property";
+import PostShow from "./post-show";
+import PostCreate from "./post-create";
+import PostList from "./post-list";
+import PostEdit from "./post-edit";
 
 export {
     AgentProfile,
@@ -18,4 +22,8 @@ export {
     MyProfile,
     PropertyDetails,
     EditProperty,
+    PostShow,
+    PostCreate,
+    PostEdit,
+    PostList
 };
