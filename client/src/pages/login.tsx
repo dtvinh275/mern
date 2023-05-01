@@ -48,7 +48,7 @@ export const Login: React.FC = () => {
     <Box
       component="div"
       sx={{
-        backgroundColor: '#FCFCFC',
+        backgroundColor: "#FCFCFC",
       }}
     >
       <Container
@@ -70,18 +70,17 @@ export const Login: React.FC = () => {
           }}
         >
           <div>
-            <img 
-              src={kielo} 
-
+            <img
+              src={kielo}
               style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: "190px", 
-              }} 
-
-              alt="Kielo Logo" />
-            </div>
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "190px",
+              }}
+              alt="Kielo Logo"
+            />
+          </div>
           <Box mt={4}>
             <GoogleButton />
           </Box>

@@ -1,5 +1,9 @@
 import React, { useContext } from "react";
-import { useGetIdentity, useGetLocale, useSetLocale } from "@pankod/refine-core";
+import {
+  useGetIdentity,
+  useGetLocale,
+  useSetLocale,
+} from "@pankod/refine-core";
 import {
   AppBar,
   Stack,
@@ -10,6 +14,7 @@ import {
   IconButton,
   MenuItem,
   Select,
+  Box,
 } from "@pankod/refine-mui";
 import { DarkModeOutlined, LightModeOutlined } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
@@ -30,10 +35,10 @@ export const Header: React.FC = () => {
 
   return shouldRenderHeader ? (
     <AppBar
-    color="default"
-    position="sticky"
-    elevation={0}
-    sx={{ background: "#fcfcfc" }}
+      color="default"
+      position="sticky"
+      elevation={0}
+      sx={{ background: "#fcfcfc" }}
     >
       <Toolbar>
         <Stack
@@ -42,6 +47,7 @@ export const Header: React.FC = () => {
           justifyContent="flex-end"
           alignItems="center"
         >
+          <Box>
             <FormControl sx={{ minWidth: 64 }}>
               <Select
                 disableUnderline
@@ -93,11 +99,13 @@ export const Header: React.FC = () => {
                 ))}
               </Select>
             </FormControl>
+          </Box>
           <Stack
             direction="row"
             gap="16px"
             alignItems="center"
             justifyContent="center"
+            ml={2}
           >
             {user?.name ? (
               <Typography variant="subtitle2">{user?.name}</Typography>
