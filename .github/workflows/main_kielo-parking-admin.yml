@@ -20,10 +20,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16.x'
-      
-      - name: Set up Node.js runs configuration
-        run: |
-          using: 'node16'
 
       - name: npm install, build, and test
         run: |
