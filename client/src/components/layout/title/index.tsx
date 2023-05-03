@@ -2,7 +2,7 @@ import React from "react";
 import { useRouterContext, TitleProps } from "@pankod/refine-core";
 import { Button } from "@pankod/refine-mui";
 
-import { kielo, icon } from "assets";
+import { kielo_paner, kielo_logo } from "assets";
 
 export const Title: React.FC<TitleProps> = ({ collapsed }) => {
   const { Link } = useRouterContext();
@@ -11,9 +11,9 @@ export const Title: React.FC<TitleProps> = ({ collapsed }) => {
     <Button fullWidth variant="text" disableRipple>
       <Link to="/">
         {collapsed ? (
-          <img src={ icon } alt="Kielo logo" width="35px" />
+          <img src={kielo_logo} alt="Kielo logo" width="35px" />
         ) : (
-          <img src={ kielo } alt="Kielo paner" width="160px" />
+          <img src={kielo_paner} alt="Kielo paner" width="160px" />
         )}
       </Link>
     </Button>

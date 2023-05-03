@@ -1,6 +1,9 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=16"
+  },
   "private": true,
   "dependencies": {
     "@mui/icons-material": "^5.8.3",

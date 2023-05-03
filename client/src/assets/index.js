@@ -1,6 +1,4 @@
-import logo from "./logo.svg";
-import yariga from "./yariga.svg";
-import icon from "./icon.png";
-import kielo from "./kielo.png";
+import kielo_logo from "./kielo_logo.png";
+import kielo_paner from "./kielo_panner.png";
 
-export { logo, yariga, icon, kielo };
+export { kielo_logo, kielo_paner };

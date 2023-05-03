@@ -1,0 +1,145 @@
+{
+  "pages": {
+    "login": {
+      "title": "Kirjaudu tilillesi",
+      "signin": "Kirjaudu sisään",
+      "signup": "Kirjaudu",
+      "divider": "tai",
+      "fields": {
+        "email": "Email",
+        "password": "Passwort"
+      },
+      "errors": {
+        "validEmail": "Virheellinen sähköpostiosoite"
+      },
+      "buttons": {
+        "submit": "Kirjaudu sisään",
+        "forgotPassword": "Unohtuiko salasana?",
+        "noAccount": "Eikö sinulla ole tiliä?",
+        "rememberMe": "Muista minut"
+      }
+    },
+    "forgotPassword": {
+      "title": "Unohditko salasanasi?",
+      "fields": {
+        "email": "Email"
+      },
+      "errors": {
+        "validEmail": "Virheellinen sähköpostiosoite"
+      },
+      "buttons": {
+        "submit": "Lähetä palautusohjeet"
+      }
+    },
+    "register": {
+      "title": "Rekisteröidy tilillesi",
+      "fields": {
+        "email": "Email",
+        "password": "Passwort"
+      },
+      "errors": {
+        "validEmail": "Virheellinen sähköpostiosoite"
+      },
+      "buttons": {
+        "submit": "Rekisteröidy",
+        "haveAccount": "On tili?"
+      }
+    },
+    "updatePassword": {
+      "title": "Päivitä salasana",
+      "fields": {
+        "password": "Uusi Salasana",
+        "confirmPassword": "Vahvista uusi salasana"
+      },
+      "errors": {
+        "confirmPasswordNotMatch": "Salasanat eivät täsmää"
+      },
+      "buttons": {
+        "submit": "Päivittää"
+      }
+    },
+    "error": {
+      "info": "Olet ehkä unohtanut lisätä {{action}} komponentin {{resource}} resurssiin.",
+      "404": "Valitettavasti sivua, jolla kävit, ei ole olemassa.",
+      "resource404": "Oletko varma, että olet luonut resurssin {{resource}}.",
+      "backHome": "Takaisin Kotiin"
+    }
+  },
+  "actions": {
+    "list": "Lista",
+    "create": "Luoda",
+    "edit": "Muokata",
+    "show": "Näytä"
+  },
+  "buttons": {
+    "create": "Luoda",
+    "save": "Tallentaa",
+    "logout": "Kirjautua ulos",
+    "delete": "Poistaa",
+    "edit": "Muokata",
+    "cancel": "Peruuttaa",
+    "confirm": "Oletko varma?",
+    "filter": "Suodattaa",
+    "clear": "Asia selvä",
+    "refresh": "virkistää",
+    "show": "Näytä",
+    "undo": "Kumoa",
+    "import": "Tuonti",
+    "clone": "Klooni",
+    "notAccessTitle": "Sinulla ei ole käyttöoikeutta"
+  },
+  "warnWhenUnsavedChanges": "Oletko varma, että haluat lähteä? Sinulla on tallentamattomia muutoksia.",
+  "notifications": {
+    "success": "Onnistui",
+    "error": "Virhe (status code: {{statusCode}})",
+    "undoable": "Sinulla on {{seconds}} sekuntia perua",
+    "createSuccess": "{{resource}} luotu onnistuneesti.",
+    "createError": "Luonnissa tapahtui virhe {{resource}} (status code: {{statusCode}})",
+    "deleteSuccess": "{{resource}} poistettiin onnistuneesti.",
+    "deleteError": "Virhe poistettaessa {{resource}} (status code: {{statusCode}})",
+    "editSuccess": "Muokattu onnistuneesti {{resource}}.",
+    "editError": "Virhe muokkauksessa {{resource}} (status code: {{statusCode}})",
+    "importProgress": "Tuodaan: {{processed}}/{{total}}"
+  },
+  "loading": "Ladataan",
+  "tags": {
+    "clone": "Klooni"
+  },
+  "dashboard": {
+    "title": "Kojelauta"
+  },
+  "blog_posts": {
+    "blog_posts": "Blogiviestit",
+    "fields": {
+      "id": "Id",
+      "title": "Otsikko",
+      "content": "Sisältö",
+      "status": "Tila",
+      "category": "Kategoria",
+      "createdAt": "Luotu Klo"
+    },
+    "titles": {
+      "create": "Luo Blogikirjoitus",
+      "edit": "Muokkaa Blogikirjoitusta",
+      "list": "Blogiviestit",
+      "show": "Näytä Blogiviesti"
+    }
+  },
+  "categories": {
+    "categories": "Luokat",
+    "fields": {
+      "id": "Id",
+      "title": "Otsikko",
+      "createdAt": "Luotu Klo"
+    },
+    "titles": {
+      "create": "Luo Luokka",
+      "edit": "Muokkaa Luokkaa",
+      "list": "Luokat",
+      "show": "Näytä Luokka"
+    }
+  },
+  "table": {
+    "actions": "Toiminnot"
+  }
+}

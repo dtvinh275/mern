@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLogin } from "@pankod/refine-core";
 import { Container, Box } from "@pankod/refine-mui";
 
-import { kielo } from "assets";
+import { kielo_paner } from "assets";
 
 import { CredentialResponse } from "../interfaces/google";
 
@@ -71,7 +71,7 @@ export const Login: React.FC = () => {
         >
           <div>
             <img
-              src={kielo}
+              src={kielo_paner}
               style={{
                 display: "flex",
                 alignItems: "center",

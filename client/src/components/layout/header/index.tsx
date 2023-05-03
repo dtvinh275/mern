@@ -92,7 +92,7 @@ export const Header: React.FC = () => {
                         src={`/images/flags/${lang}.svg`}
                       />
                       <Typography>
-                        {lang === "en" ? "English" : "German"}
+                        {lang === "en" ? "English" : "Finnish"}
                       </Typography>
                     </Stack>
                   </MenuItem>
