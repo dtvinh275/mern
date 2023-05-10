@@ -24,6 +24,16 @@ export interface VisitorCardProps {
   plateNumber: string;
 }
 
+export interface InfoBarProps {
+  icon: ReactNode;
+  fullName: string;
+  phoneNumber: string;
+  city: string;
+  property: string;
+  company: string;
+  plateNumber: string;
+}
+
 // import { BaseKey } from "@refinedev/core";
 
 // export interface VisitorCardProps {

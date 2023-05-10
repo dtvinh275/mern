@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Refine, AuthProvider } from "@pankod/refine-core";
 import {
   notificationProvider,
@@ -14,9 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import {
   AccountCircleOutlined,
-  ChatBubbleOutline,
   PeopleAltOutlined,
-  StarOutlineRounded,
   VillaOutlined,
   ListAltOutlined,
 } from "@mui/icons-material";
@@ -163,6 +159,13 @@ function App() {
               icon: <ListAltOutlined />,
             },
             {
+              name: "posts",
+              list: PostList,
+              create: PostCreate,
+              show: PostShow,
+              edit: PostEdit,
+            },
+            {
               name: "properties",
               list: AllProperties,
               show: PropertyDetails,
@@ -176,16 +179,6 @@ function App() {
               show: AgentProfile,
               icon: <PeopleAltOutlined />,
             },
-            // {
-            //     name: "reviews",
-            //     list: Home,
-            //     icon: <StarOutlineRounded />,
-            // },
-            // {
-            //     name: "messages",
-            //     list: Home,
-            //     icon: <ChatBubbleOutline />,
-            // },
             {
               name: "my-profile",
               options: { label: "My Profile " },
@@ -209,6 +202,7 @@ function App() {
           i18nProvider={i18nProvider}
         />
       </RefineSnackbarProvider>
+      //
     </ColorModeContextProvider>
   );
 }

@@ -10,6 +10,7 @@ import {
   Star,
 } from "@mui/icons-material";
 import { CustomButton } from "components";
+import { kielo_paner } from "assets";
 
 function checkImage(url: any) {
   const img = new Image();
@@ -78,7 +79,11 @@ const PropertyDetails = () => {
       >
         <Box flex={1} maxWidth={764}>
           <img
-            src={propertyDetails.photo}
+            src={
+              propertyDetails.photo
+                ? propertyDetails.photo
+                : "https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
+            }
             alt="property_details-img"
             height={546}
             style={{ objectFit: "cover", borderRadius: "10px" }}

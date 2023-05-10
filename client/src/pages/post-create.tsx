@@ -2,19 +2,23 @@ import { Create, useAutocomplete } from "@pankod/refine-mui";
 import { Box, TextField, Autocomplete } from "@mui/material";
 import { useForm } from "@pankod/refine-react-hook-form";
 import { Controller } from "react-hook-form";
+import VisitorForm from "components/common/VisitorForm";
 
 const PostCreate = () => {
   const {
     saveButtonProps,
-    refineCore: { formLoading },
+    refineCore: { formLoading, onFinish },
     register,
     control,
+    handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const { autocompleteProps: categoryAutocompleteProps } = useAutocomplete({
-    resource: "categories",
-  });
+  const onFinishHandler = async (data: Record<string, any>) => {
+    //if (!propertyImage.url) return alert("Please select an image");
+
+    await onFinish(data);
+  };
 
   return (
     <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
@@ -23,33 +27,93 @@ const PostCreate = () => {
         sx={{ display: "flex", flexDirection: "column" }}
         autoComplete="off"
       >
-        <TextField
-          {...register("title", {
+        <VisitorForm
+          type="Create"
+          register={register}
+          onFinish={onFinish}
+          formLoading={formLoading}
+          handleSubmit={handleSubmit}
+          onFinishHandler={onFinishHandler}
+        />
+        {/* <TextField
+          {...register("fullName", {
             required: "This field is required",
           })}
-          error={!!(errors as any)?.title}
-          helperText={(errors as any)?.title?.message}
+          error={!!(errors as any)?.fullName}
+          helperText={(errors as any)?.fullName?.message}
           margin="normal"
           fullWidth
           InputLabelProps={{ shrink: true }}
           type="text"
-          label="Title"
-          name="title"
+          label="Full name"
+          name="fullName"
         />
         <TextField
-          {...register("content", {
+          {...register("phoneNumber", {
             required: "This field is required",
           })}
-          error={!!(errors as any)?.content}
-          helperText={(errors as any)?.content?.message}
+          error={!!(errors as any)?.phoneNumber}
+          helperText={(errors as any)?.phoneNumber?.message}
           margin="normal"
           fullWidth
           InputLabelProps={{ shrink: true }}
           type="text"
-          label="Content"
-          name="content"
+          label="Phone Number"
+          name="phoneNumber"
         />
-        <Controller
+        <TextField
+          {...register("city", {
+            required: "This field is required",
+          })}
+          error={!!(errors as any)?.city}
+          helperText={(errors as any)?.city?.message}
+          margin="normal"
+          fullWidth
+          InputLabelProps={{ shrink: true }}
+          type="text"
+          label="City"
+          name="city"
+        />
+        <TextField
+          {...register("property", {
+            required: "This field is required",
+          })}
+          error={!!(errors as any)?.property}
+          helperText={(errors as any)?.property?.message}
+          margin="normal"
+          fullWidth
+          InputLabelProps={{ shrink: true }}
+          type="text"
+          label="Property"
+          name="property"
+        />
+        <TextField
+          {...register("company", {
+            required: "This field is required",
+          })}
+          error={!!(errors as any)?.company}
+          helperText={(errors as any)?.company?.message}
+          margin="normal"
+          fullWidth
+          InputLabelProps={{ shrink: true }}
+          type="text"
+          label="Company"
+          name="company"
+        />
+        <TextField
+          {...register("plateNumber", {
+            required: "This field is required",
+          })}
+          error={!!(errors as any)?.plateNumber}
+          helperText={(errors as any)?.plateNumber?.message}
+          margin="normal"
+          fullWidth
+          InputLabelProps={{ shrink: true }}
+          type="text"
+          label="Plate Number"
+          name="plateNumber"
+        /> */}
+        {/* <Controller
           control={control}
           name="category"
           rules={{ required: "This field is required" }}
@@ -100,12 +164,6 @@ const PostCreate = () => {
           label="Status"
           name="status"
         />
-        {/*
-                    DatePicker component is not included in "@refinedev/mui" package.
-                    To use a <DatePicker> component, you can follow the official documentation for Material UI.
-
-                    Docs: https://mui.com/x/react-date-pickers/date-picker/#basic-usage
-                */}
         <TextField
           {...register("createdAt", {
             required: "This field is required",
@@ -117,7 +175,7 @@ const PostCreate = () => {
           InputLabelProps={{ shrink: true }}
           label="Created At"
           name="createdAt"
-        />
+        /> */}
       </Box>
     </Create>
   );

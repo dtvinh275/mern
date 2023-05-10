@@ -223,10 +223,10 @@
 //                   label="Status Color"
 //                   name="status_color"
 //               />
-//               {/* 
+//               {/*
 //                   DatePicker component is not included in "@pankod/refine-mui" package.
 //                   To use a <DatePicker> component, you can follow the official documentation for Material UI.
-                  
+
 //                   Docs: https://mui.com/x/react-date-pickers/date-picker/#basic-usage
 //               */}
 //               <TextField
@@ -242,10 +242,10 @@
 //                   name="createdAt"
 //               />
 
-//               {/* 
+//               {/*
 //                   DatePicker component is not included in "@pankod/refine-mui" package.
 //                   To use a <DatePicker> component, you can follow the official documentation for Material UI.
-                  
+
 //                   Docs: https://mui.com/x/react-date-pickers/date-picker/#basic-usage
 //               */}
 //               <TextField
@@ -356,149 +356,163 @@
 
 import { Edit, useAutocomplete } from "@pankod/refine-mui";
 import { Box, TextField, Autocomplete } from "@mui/material";
-import { useForm } from "@pankod/refine-react-hook-form"
+import { useForm, FieldValues } from "@pankod/refine-react-hook-form";
 import { Controller } from "react-hook-form";
+import { useGetIdentity } from "@pankod/refine-core";
+import { useNavigate } from "@pankod/refine-react-router-v6";
+import VisitorForm from "components/common/VisitorForm";
 
 const PostEdit = () => {
-    const {
-        saveButtonProps,
-        refineCore: { queryResult },
-        register,
-        control,
-        formState: { errors },
-    } = useForm();
+  const navigate = useNavigate();
+  const { data: user } = useGetIdentity({});
+  const {
+    saveButtonProps,
+    refineCore: { queryResult, onFinish, formLoading },
+    register,
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const blogPostsData = queryResult?.data?.data;
+  const onFinishHandler = async (data: FieldValues) => {
+    //if (!propertyImage.url) return alert("Please select an image");
 
-    const { autocompleteProps: categoryAutocompleteProps } = useAutocomplete({
-        resource: "categories",
-        defaultValue: blogPostsData?.category?.id,
+    await onFinish({
+      ...data,
+      email: user.email,
     });
+  };
 
-    return (
-        <Edit saveButtonProps={saveButtonProps}>
-            <Box
-                component="form"
-                sx={{ display: "flex", flexDirection: "column" }}
-                autoComplete="off"
-            >
-                <TextField
-                    {...register("id", {
-                        required: "This field is required",
-                        valueAsNumber: true,
-                    })}
-                    error={!!(errors as any)?.id}
-                    helperText={(errors as any)?.id?.message}
-                    margin="normal"
-                    fullWidth
-                    InputLabelProps={{ shrink: true }}
-                    type="number"
-                    label="Id"
-                    name="id"
-                    disabled
-                />
-                <TextField
-                    {...register("title", {
-                        required: "This field is required",
-                    })}
-                    error={!!(errors as any)?.title}
-                    helperText={(errors as any)?.title?.message}
-                    margin="normal"
-                    fullWidth
-                    InputLabelProps={{ shrink: true }}
-                    type="text"
-                    label="Title"
-                    name="title"
-                />
-                <TextField
-                    {...register("content", {
-                        required: "This field is required",
-                    })}
-                    error={!!(errors as any)?.content}
-                    helperText={(errors as any)?.content?.message}
-                    margin="normal"
-                    fullWidth
-                    InputLabelProps={{ shrink: true }}
-                    type="text"
-                    label="Content"
-                    name="content"
-                />
-                <Controller
-                    control={control}
-                    name="category"
-                    rules={{ required: "This field is required" }}
-                    // eslint-disable-next-line
-                    defaultValue={null as any}
-                    render={({ field }) => (
-                        <Autocomplete
-                            {...categoryAutocompleteProps}
-                            {...field}
-                            onChange={(_, value) => {
-                                field.onChange(value);
-                            }}
-                            getOptionLabel={(item) => {
-                                return (
-                                    categoryAutocompleteProps?.options?.find(
-                                        (p) =>
-                                            p?.id?.toString() ===
-                                            item?.id?.toString(),
-                                    )?.title ?? ""
-                                );
-                            }}
-                            isOptionEqualToValue={(option, value) =>
-                                value === undefined ||
-                                option?.id?.toString() === value?.id?.toString()
+  return (
+    <Edit saveButtonProps={saveButtonProps}>
+      <Box
+        component="form"
+        sx={{ display: "flex", flexDirection: "column" }}
+        autoComplete="off"
+      >
+        <VisitorForm
+          type="Edit"
+          register={register}
+          onFinish={onFinish}
+          formLoading={formLoading}
+          handleSubmit={handleSubmit}
+          onFinishHandler={onFinishHandler}
+        />
+      </Box>
+    </Edit>
+  );
+};
+
+export default PostEdit;
+
+{
+  /* <TextField
+            {...register("id", {
+                required: "This field is required",
+                valueAsNumber: true,
+            })}
+            error={!!(errors as any)?.id}
+            helperText={(errors as any)?.id?.message}
+            margin="normal"
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            type="number"
+            label="Id"
+            name="id"
+            disabled
+        />
+        <TextField
+            {...register("title", {
+                required: "This field is required",
+            })}
+            error={!!(errors as any)?.title}
+            helperText={(errors as any)?.title?.message}
+            margin="normal"
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            type="text"
+            label="Title"
+            name="title"
+        />
+        <TextField
+            {...register("content", {
+                required: "This field is required",
+            })}
+            error={!!(errors as any)?.content}
+            helperText={(errors as any)?.content?.message}
+            margin="normal"
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            type="text"
+            label="Content"
+            name="content"
+        />
+        <Controller
+            control={control}
+            name="category"
+            rules={{ required: "This field is required" }}
+            // eslint-disable-next-line
+            defaultValue={null as any}
+            render={({ field }) => (
+                <Autocomplete
+                    {...categoryAutocompleteProps}
+                    {...field}
+                    onChange={(_, value) => {
+                        field.onChange(value);
+                    }}
+                    getOptionLabel={(item) => {
+                        return (
+                            categoryAutocompleteProps?.options?.find(
+                                (p) =>
+                                    p?.id?.toString() ===
+                                    item?.id?.toString(),
+                            )?.title ?? ""
+                        );
+                    }}
+                    isOptionEqualToValue={(option, value) =>
+                        value === undefined ||
+                        option?.id?.toString() === value?.id?.toString()
+                    }
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Category"
+                            margin="normal"
+                            variant="outlined"
+                            error={!!(errors as any)?.category?.id}
+                            helperText={
+                                (errors as any)?.category?.id?.message
                             }
-                            renderInput={(params) => (
-                                <TextField
-                                    {...params}
-                                    label="Category"
-                                    margin="normal"
-                                    variant="outlined"
-                                    error={!!(errors as any)?.category?.id}
-                                    helperText={
-                                        (errors as any)?.category?.id?.message
-                                    }
-                                    required
-                                />
-                            )}
+                            required
                         />
                     )}
                 />
-                <TextField
-                    {...register("status", {
-                        required: "This field is required",
-                    })}
-                    error={!!(errors as any)?.status}
-                    helperText={(errors as any)?.status?.message}
-                    margin="normal"
-                    fullWidth
-                    InputLabelProps={{ shrink: true }}
-                    type="text"
-                    label="Status"
-                    name="status"
-                />
-                {/*
-                    DatePicker component is not included in "@refinedev/mui" package.
-                    To use a <DatePicker> component, you can follow the official documentation for Material UI.
+            )}
+        />
+        <TextField
+            {...register("status", {
+                required: "This field is required",
+            })}
+            error={!!(errors as any)?.status}
+            helperText={(errors as any)?.status?.message}
+            margin="normal"
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            type="text"
+            label="Status"
+            name="status"
+        />
 
-                    Docs: https://mui.com/x/react-date-pickers/date-picker/#basic-usage
-                */}
-                <TextField
-                    {...register("createdAt", {
-                        required: "This field is required",
-                    })}
-                    error={!!(errors as any)?.createdAt}
-                    helperText={(errors as any)?.createdAt?.message}
-                    margin="normal"
-                    fullWidth
-                    InputLabelProps={{ shrink: true }}
-                    label="Created At"
-                    name="createdAt"
-                />
-            </Box>
-        </Edit>
-    );
-};
-
-export default PostEdit
+        <TextField
+            {...register("createdAt", {
+                required: "This field is required",
+            })}
+            error={!!(errors as any)?.createdAt}
+            helperText={(errors as any)?.createdAt?.message}
+            margin="normal"
+            fullWidth
+            InputLabelProps={{ shrink: true }}
+            label="Created At"
+            name="createdAt"
+        /> */
+}

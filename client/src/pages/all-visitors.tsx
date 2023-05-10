@@ -14,7 +14,7 @@ import {
 } from "@pankod/refine-mui";
 import { useNavigate } from "@pankod/refine-react-router-v6";
 
-import { VisitorCard, VisitorButton } from "components";
+import { VisitorCard, VisitorButton, VisitorDetailsCard } from "components";
 import { useMemo } from "react";
 
 const AllVisitors = () => {
@@ -128,21 +128,28 @@ const AllVisitors = () => {
       </Box>
 
       <Box
-        mt="0px"
+        // mt="0px"
+        // sx={{
+        //   //   display: "grib",
+        //   //   gridTemplateColumns: "repeat(auto-fill, minmax(330px, 1fr))",
+        //   backgroundColor: "#fcfcfc",
+        // }}
+        // display="flex"
+        // flexDirection="column"
+        // boxShadow={1}
+        // borderRadius={2}
+        // width="flex"
+        // flexWrap="wrap"
+        mt="20px"
         sx={{
-          //   display: "grib",
-          //   gridTemplateColumns: "repeat(auto-fill, minmax(330px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "20px",
           backgroundColor: "#fcfcfc",
         }}
-        display="flex"
-        flexDirection="column"
-        boxShadow={1}
-        borderRadius={2}
-        width="flex"
-        flexWrap="wrap"
       >
         {allVisitors.map((visitor) => (
-          <VisitorCard
+          <VisitorDetailsCard
             key={visitor._id}
             id={visitor._id}
             fullName={visitor.fullName}

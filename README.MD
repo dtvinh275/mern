@@ -2,7 +2,7 @@
 
 <div align="center" style="margin: 30px;">
     <a href="https://kieloofficesolutions.fi/">
-    <img src="./src/assets/kielo_panner.png"  align="center" />
+    <img src="./client/src/assets/kielo_panner.png"  align="center" />
     </a>
 </div>
 <br/>

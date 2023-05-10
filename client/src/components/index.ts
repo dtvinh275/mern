@@ -5,6 +5,7 @@ import CustomButton from "./common/CustomButton";
 import VisitorCard from "./common/VisitorCard";
 import VisitorButton from "./common/VisitorButton";
 import VisitorForm from "./common/VisitorForm";
+import VisitorDetailsCard from "./common/VisitorDetailsCard";
 
 // charts
 import PieChart from "./charts/PieChart";
@@ -29,4 +30,5 @@ export {
   VisitorCard,
   VisitorButton,
   VisitorForm,
+  VisitorDetailsCard,
 };

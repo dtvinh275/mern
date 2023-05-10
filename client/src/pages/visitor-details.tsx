@@ -8,8 +8,15 @@ import {
   Phone,
   Place,
   Star,
+  EmailOutlined,
+  LocationCity,
+  BusinessCenter,
+  PinOutlined,
 } from "@mui/icons-material";
-import { VisitorButton } from "components";
+import { Link } from "@pankod/refine-react-router-v6";
+import { VisitorDetailsCard, VisitorButton } from "components";
+import { VisitorCardProps } from "interfaces/visitor";
+import { useList } from "@pankod/refine-core";
 
 function checkImage(url: any) {
   const img = new Image();
@@ -59,73 +66,120 @@ const VisitorDetails = () => {
   };
 
   return (
-    <Box
-      borderRadius="15px"
-      padding="20px"
-      bgcolor="#FCFCFC"
-      width="fit-content"
-    >
-      <Typography fontSize={25} fontWeight={700} color="#11142D">
-        Details
+    <Box>
+      <Typography fontSize={25} fontWeight={700} color="#11142d">
+        Agents List
       </Typography>
+
       <Box
-        mt="10px"
-        display="flex"
-        flexDirection={{ xs: "column", lg: "row" }}
-        gap={4}
+        mt="20px"
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "20px",
+          backgroundColor: "#fcfcfc",
+        }}
       >
-        <Box flex={1} maxWidth={764}>
-          <Box mt="0px">
+        <Box
+          // component={Link}
+          // to={`/visitors/show/${id}`}
+          width="100%"
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", sm: "row" },
+            gap: "20px",
+            padding: "20px",
+            "&:hover": {
+              boxShadow: "0 22px 45px 2px rgba(176,176,176,0.1)",
+            },
+          }}
+        >
+          <Stack
+            direction="column"
+            justifyContent="space-between"
+            flex={1}
+            gap={{ xs: 4, sm: 2 }}
+          >
+            <Stack gap={2} direction="row" flexWrap="wrap" alignItems="center">
+              <Typography fontSize={22} fontWeight={600} color="#11142d">
+                {visitorDetails.fullName}
+              </Typography>
+            </Stack>
             <Stack
               direction="row"
               flexWrap="wrap"
               justifyContent="space-between"
-              alignItems="top"
+              alignItems="center"
               gap={2}
             >
-              <Box>
-                <Typography fontSize={18} fontWeight={600} color="#11142D">
-                  {visitorDetails.fullName}
-                </Typography>
-                <Typography fontSize={17} color="#808191">
+              <Stack
+                flex={1}
+                minWidth={{ xs: "100%", sm: 300 }}
+                gap={1.5}
+                direction="row"
+              >
+                <Phone sx={{ color: "#808191" }} />
+                <Typography fontSize={14} color="#808191">
                   {visitorDetails.phoneNumber}
                 </Typography>
-              </Box>
-
-              <Box>
-                <Typography fontSize={18} color="#11142D">
-                  Plate Number
-                </Typography>
-                <Typography fontSize={17} color="#808191">
-                  {visitorDetails.plateNumber}
-                </Typography>
-              </Box>
-
-              <Stack direction="column" alignItems="top">
-                <Typography fontSize={18} color="#11142D">
-                  Location
-                </Typography>
-                <Typography fontSize={17} color="#808191">
-                  {visitorDetails.property}
-                </Typography>
-                <Typography fontSize={17} color="#808191">
+              </Stack>
+              <Stack
+                flex={1}
+                minWidth={{ xs: "100%", sm: 300 }}
+                gap={1.5}
+                direction="row"
+              >
+                <Place sx={{ color: "#808191" }} />
+                <Typography fontSize={14} color="#808191">
                   {visitorDetails.city}
                 </Typography>
               </Stack>
-
-              <Stack direction="column" alignItems="top">
-                <Typography fontSize={18} color="#11142D">
-                  Company
+              <Stack
+                flex={1}
+                minWidth={{ xs: "100%", sm: 300 }}
+                gap={1.5}
+                direction="row"
+              >
+                <LocationCity sx={{ color: "#808191" }} />
+                <Typography fontSize={14} color="#808191">
+                  {visitorDetails.property}
                 </Typography>
-                <Typography fontSize={17} color="#808191">
+              </Stack>
+              <Stack
+                flex={1}
+                minWidth={{ xs: "100%", sm: 300 }}
+                gap={1.5}
+                direction="row"
+              >
+                <BusinessCenter sx={{ color: "#808191" }} />
+                <Typography fontSize={14} color="#808191">
                   {visitorDetails.company}
                 </Typography>
               </Stack>
-
+              <Stack
+                flex={1}
+                minWidth={{ xs: "100%", sm: 300 }}
+                gap={1.5}
+                direction="row"
+              >
+                <PinOutlined sx={{ color: "#808191" }} />
+                <Typography fontSize={14} color="#808191">
+                  {visitorDetails.plateNumber}
+                </Typography>
+              </Stack>
+            </Stack>
+            <Box
+              width="100%"
+              flex={1}
+              maxWidth={326}
+              display="flex"
+              flexDirection="column"
+              gap="20px"
+            >
               <Stack
                 width="100%"
                 mt="25px"
-                direction="row"
+                direction="column"
                 flexWrap="wrap"
                 gap={2}
               >
@@ -150,8 +204,8 @@ const VisitorDetails = () => {
                   }}
                 />
               </Stack>
-            </Stack>
-          </Box>
+            </Box>
+          </Stack>
         </Box>
       </Box>
     </Box>
