@@ -7,7 +7,7 @@
 </div>
 <br/>
 
-This is [Kielo parking](https://github.com/) project.
+This is [Kielo parking](https://kieloofficesolutions.fi/) project.
 
 ## Getting Started
 
