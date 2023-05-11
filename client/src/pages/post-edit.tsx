@@ -354,7 +354,12 @@
 
 // export default PostEdit
 
-import { Edit, useAutocomplete } from "@pankod/refine-mui";
+import {
+  Edit,
+  useAutocomplete,
+  ListButton,
+  RefreshButton,
+} from "@pankod/refine-mui";
 import { Box, TextField, Autocomplete } from "@mui/material";
 import { useForm, FieldValues } from "@pankod/refine-react-hook-form";
 import { Controller } from "react-hook-form";
@@ -384,7 +389,16 @@ const PostEdit = () => {
   };
 
   return (
-    <Edit saveButtonProps={saveButtonProps}>
+    <Edit
+      //   saveButtonProps={saveButtonProps}
+      headerButtons={
+        <ListButton style={{ color: "#475be8", display: "none" }} />
+      }
+      saveButtonProps={{
+        onClick: handleSubmit(onFinish),
+        style: { backgroundColor: "#475be8" },
+      }}
+    >
       <Box
         component="form"
         sx={{ display: "flex", flexDirection: "column" }}

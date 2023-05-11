@@ -66,6 +66,7 @@ import {
   Show,
   NumberField,
   TextFieldComponent as TextField,
+  ListButton,
 } from "@pankod/refine-mui";
 import { Typography, Stack, Box } from "@mui/material";
 import { useGetIdentity, useDelete } from "@pankod/refine-core";
@@ -115,7 +116,12 @@ const PostShow = () => {
   };
 
   return (
-    <Show isLoading={isLoading}>
+    <Show
+      isLoading={isLoading}
+      headerButtons={
+        <ListButton style={{ color: "#475be8", display: "none" }} />
+      }
+    >
       {/* <Stack gap={1}>
         <Typography variant="body1" fontWeight="bold">
           Full Name
@@ -252,8 +258,8 @@ const PostShow = () => {
                 >
                   <VisitorButton
                     title={"Delete"}
-                    backgroundColor={"#d42e2e"}
-                    color="#FCFCFC"
+                    backgroundColor={"white"}
+                    color="#d42e2e"
                     fullWidth
                     icon={<Delete />}
                     handleClick={() => {

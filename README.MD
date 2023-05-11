@@ -15,7 +15,17 @@ This is [Kielo parking](https://github.com/) project.
 
 ## Available Scripts
 
-### Running the development server.
+```bash
+    npm install
+```
+
+### Running the server.
+
+```bash
+    npm start
+```
+
+### Running the development client.
 
 ```bash
     npm run dev
@@ -25,10 +35,4 @@ This is [Kielo parking](https://github.com/) project.
 
 ```bash
     npm run build
-```
-
-### Running the production server.
-
-```bash
-    npm run start
 ```

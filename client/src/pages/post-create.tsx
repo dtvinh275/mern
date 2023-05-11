@@ -1,10 +1,12 @@
-import { Create, useAutocomplete } from "@pankod/refine-mui";
+import { Create, SaveButton, useAutocomplete } from "@pankod/refine-mui";
 import { Box, TextField, Autocomplete } from "@mui/material";
 import { useForm } from "@pankod/refine-react-hook-form";
 import { Controller } from "react-hook-form";
 import VisitorForm from "components/common/VisitorForm";
+import { useNavigate } from "@pankod/refine-react-router-v6";
 
 const PostCreate = () => {
+  const navigate = useNavigate();
   const {
     saveButtonProps,
     refineCore: { formLoading, onFinish },
@@ -21,7 +23,14 @@ const PostCreate = () => {
   };
 
   return (
-    <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
+    <Create
+      isLoading={formLoading}
+      saveButtonProps={saveButtonProps}
+      // saveButtonProps={{
+      //   saveButtonProps,
+      //   style: { backgroundColor: "#475be8" },
+      // }}
+    >
       <Box
         component="form"
         sx={{ display: "flex", flexDirection: "column" }}

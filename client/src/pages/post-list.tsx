@@ -122,7 +122,7 @@ import {
   DateField,
 } from "@pankod/refine-mui";
 import { DataGrid, GridColumns } from "@mui/x-data-grid";
-import { useMany } from "@pankod/refine-core";
+import { useMany, usePermissions } from "@pankod/refine-core";
 
 const VisitorList = () => {
   const { dataGridProps } = useDataGrid();
@@ -182,8 +182,16 @@ const VisitorList = () => {
         renderCell: function render({ row }) {
           return (
             <>
-              <EditButton hideText recordItemId={row._id} />
-              <ShowButton hideText recordItemId={row._id} />
+              <EditButton
+                hideText
+                recordItemId={row._id}
+                style={{ color: "#475be8" }}
+              />
+              <ShowButton
+                hideText
+                recordItemId={row._id}
+                style={{ color: "#475be8" }}
+              />
             </>
           );
         },
@@ -195,8 +203,13 @@ const VisitorList = () => {
     []
   );
 
+  const { data: permissionsData } = usePermissions();
+
   return (
-    <List>
+    <List
+      canCreate={permissionsData?.includes("admin")}
+      createButtonProps={{ style: { backgroundColor: "#475be8" } }}
+    >
       <DataGrid
         {...dataGridProps}
         columns={columns}

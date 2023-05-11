@@ -76,7 +76,7 @@ function App() {
 
       // Save user to MongoDB
       if (profileObj) {
-        const response = await fetch("http://localhost:8080/api/v1/users", {
+        const response = await fetch("http://localhost:8083/api/v1/users", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -144,26 +144,27 @@ function App() {
       <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
       <RefineSnackbarProvider>
         <Refine
-          dataProvider={dataProvider("http://localhost:8080/api/v1")}
+          dataProvider={dataProvider("http://localhost:8083/api/v1")}
           //dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
           notificationProvider={notificationProvider}
           ReadyPage={ReadyPage}
           catchAll={<ErrorComponent />}
           resources={[
-            {
-              name: "visitors",
-              list: AllVisitors,
-              create: CreateVisitor,
-              show: VisitorDetails,
-              edit: EditVisitor,
-              icon: <ListAltOutlined />,
-            },
+            // {
+            //   name: "visitors",
+            //   list: AllVisitors,
+            //   create: CreateVisitor,
+            //   show: VisitorDetails,
+            //   edit: EditVisitor,
+            //   icon: <ListAltOutlined />,
+            // },
             {
               name: "posts",
               list: PostList,
               create: PostCreate,
               show: PostShow,
               edit: PostEdit,
+              icon: <ListAltOutlined />,
             },
             {
               name: "properties",
